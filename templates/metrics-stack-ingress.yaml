@@ -1,0 +1,24 @@
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ .Release.Name }}
+  labels:
+    app: {{ .Release.Name }}
+  namespace: testns
+spec:
+  rules:
+    - host: {{ .Release.Name }}.influxdb.platform.r53.domain.net
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: {{ .Release.Name }}
+              servicePort: 8086
+    - host: {{ .Release.Name }}.grafana.platform.r53.domain.net
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: {{ .Release.Name }}
+              servicePort: 3000

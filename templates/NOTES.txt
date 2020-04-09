@@ -1,0 +1,11 @@
+# To access the InfluxDB instance usinsg CLI –
+influx -host {{ .Release.Name }}.influxdb.platform.r53.domain.net -port 80
+
+# Use the following to set the [[outputs.influxdb]] urls in telegraf/telegraf.conf -
+urls = ["http://{{ .Release.Name }}.influxdb.platform.r53.domain.net"]
+
+# Use the following URL to set the InfluxDB datasource in Grafana –
+http://{{ .Release.Name }}.influxdb.platform.r53.domain.net
+
+# Use the following URL to to access Grafana –
+http://{{ .Release.Name }}.grafana.platform.r53.domain.net/login
